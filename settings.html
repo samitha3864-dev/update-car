@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Website Settings{% endblock %}
+{% block subtitle %}Manage your shop catalogue and display preferences directly from this website — no code editing needed.{% endblock %}
+{% block content %}
+<section class="grid-2">
+  <div class="card">
+    <div class="section-head"><div><h2>🧰 Manage Categories & Products</h2><p>Add categories, add products, rename items, or move products from one category to another.</p></div></div>
+    <p class="hint">Changes saved here are used by New Entry and the product catalogue. Existing customer history is preserved when you rename or move items.</p>
+    <div class="row-actions"><a class="btn btn-primary" href="/products">Open Product Manager</a><a class="btn btn-light" href="/download-catalogue">Download Catalogue (Word)</a></div>
+  </div>
+  <div class="card">
+    <div class="section-head"><div><h2>🎨 Customer Highlight Colour</h2><p>Choose the highlight colour for customers who purchased Seat Cover or Sunfilm.</p></div></div>
+    <form id="settingsForm" class="form-grid">
+      <label>Row background colour<input id="priorityColor" type="color" value="#fff2cc" style="height:46px;padding:4px;width:100%"></label>
+      <label>Text colour<input id="priorityTextColor" type="color" value="#7f6000" style="height:46px;padding:4px;width:100%"></label>
+      <div class="settings-preview" id="settingsPreview" style="grid-column:1/-1;padding:16px;border-radius:10px;background:#fff2cc;color:#7f6000;border:1px solid #e5c76b"><b>Example highlighted customer</b><div>Seat Cover / Sunfilm purchase</div></div>
+      <div style="grid-column:1/-1"><button class="btn btn-primary" type="submit">Save Website & Excel Colours</button></div>
+    </form>
+  </div>
+  <div class="card">
+    <h2>📥 Downloads</h2><p>Download the current live catalogue or customer workbook after you make changes.</p>
+    <div class="row-actions"><a class="btn btn-light" href="/download-excel">Download Excel</a><a class="btn btn-light" href="/download-catalogue">Download Category & Product Document</a></div>
+  </div>
+  <div class="card">
+    <h2>🛡️ Data safety</h2><p>Before deploying code updates, keep a backup of <code>data/website_data.json</code> and <code>data/products.xlsx</code>. Category/product edits are saved to the app data and reflected in the workbook.</p>
+  </div>
+</section>
+{% endblock %}
+{% block scripts %}<script src="/static/settings.js"></script>{% endblock %}

@@ -1,0 +1,214 @@
+{% extends 'base.html' %}
+
+{% block title %}Analytics{% endblock %}
+
+{% block subtitle %}
+Understand customer repeat activity and product performance
+{% endblock %}
+
+{% block content %}
+
+<!-- =========================
+     STAT CARDS
+========================= -->
+
+<div class="stats">
+
+    <div class="stat">
+        <span>Repeat Customers</span>
+        <strong id="repeatCustomerCount">0</strong>
+        <small>Customers with more than one visit</small>
+    </div>
+
+    <div class="stat">
+        <span>One-time Customers</span>
+        <strong id="oneTimeCustomers">0</strong>
+        <small>Customers seen once</small>
+    </div>
+
+    <div class="stat">
+        <span>Repeat Products</span>
+        <strong id="repeatProducts">0</strong>
+        <small>Products appearing across records</small>
+    </div>
+
+    <div class="stat">
+        <span>Unique Vehicles</span>
+        <strong id="uniqueVehicles">0</strong>
+        <small>Vehicle numbers in records</small>
+    </div>
+
+</div>
+
+
+<!-- =========================
+     DAILY SALES
+========================= -->
+
+<section class="card analytics-daily-card">
+
+    <div class="section-head">
+
+        <div>
+            <h2>Daily Sales</h2>
+            <p>Select a date to view that day's total amount.</p>
+        </div>
+
+        <div class="date-selector-box">
+
+            <label for="dateSelector">
+                Select Date
+            </label>
+
+            <select id="dateSelector">
+                <option value="">Select a date</option>
+            </select>
+
+        </div>
+
+    </div>
+
+
+    <!-- MAXIMUM ONE DAY SALES -->
+
+    <div class="maximum-sales-box">
+
+        <div class="maximum-sales-title">
+            Maximum One Day Sales
+        </div>
+
+        <div id="maximumDayAmount"
+             class="maximum-sales-amount">
+            ₹0
+        </div>
+
+        <div id="maximumDayDate"
+             class="maximum-sales-date">
+            No sales data
+        </div>
+
+    </div>
+
+
+    <!-- SELECTED DAY -->
+
+    <div id="selectedDayBox"
+         class="selected-day-box">
+
+        <div class="selected-day-title">
+            Selected Day Total
+        </div>
+
+        <div id="selectedDayAmount"
+             class="selected-day-amount">
+            ₹0
+        </div>
+
+        <div id="selectedDayDate"
+             class="selected-day-date">
+            Select a date
+        </div>
+
+    </div>
+
+
+    <!-- DAILY SALES GRAPH -->
+
+    <div class="analytics-chart-container">
+
+        <canvas id="dailyChart"></canvas>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CUSTOMER VISIT PATTERN
+========================= -->
+
+<section class="chart-grid">
+
+    <!-- CUSTOMER CHART -->
+
+    <div class="card">
+
+        <div class="section-head">
+
+            <div>
+                <h2>Customer Visit Pattern</h2>
+                <p>Repeat vs one-time customers.</p>
+            </div>
+
+        </div>
+
+        <div class="customer-chart-container">
+
+            <canvas id="customerChart"></canvas>
+
+        </div>
+
+    </div>
+
+
+    <!-- REPEAT CUSTOMERS -->
+
+    <div class="card">
+
+        <div class="section-head">
+
+            <div>
+                <h2>Repeat Customers</h2>
+                <p>Name and phone number</p>
+            </div>
+
+        </div>
+
+        <div id="repeatCustomerList"
+             class="repeat-customer-list">
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PRODUCT ACTIVITY
+========================= -->
+
+<section class="card">
+
+    <div class="section-head">
+
+        <div>
+
+            <h2>Product Activity</h2>
+
+            <p>
+                Top products and products that have not appeared
+                in saved entries.
+            </p>
+
+        </div>
+
+    </div>
+
+    <div id="analyticsLists"
+         class="analytics-lists">
+    </div>
+
+</section>
+
+{% endblock %}
+
+
+<!-- =========================
+     SCRIPTS
+========================= -->
+
+{% block scripts %}
+
+<script src="/static/analytics.js"></script>
+
+{% endblock %}

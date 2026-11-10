@@ -1,0 +1,64 @@
+
+{% extends 'base.html' %}
+{% block title %}Product Management{% endblock %}
+{% block subtitle %}Manage categories and products, correct spelling, remove unwanted entries, and keep saved customer records and Excel columns in sync.{% endblock %}
+
+{% block content %}
+<section class="grid-2">
+
+  <!-- CATEGORY MANAGEMENT -->
+  <div class="card">
+    <div class="section-head">
+      <div>
+        <h2>Categories</h2>
+        <p>Select a category. Rename incorrect names or delete unwanted categories.</p>
+      </div>
+      <button class="btn btn-light" id="addCategory" type="button">
+        + Category
+      </button>
+    </div>
+
+    <div id="categoryList" class="category-list"></div>
+  </div>
+
+  <!-- PRODUCT MANAGEMENT -->
+  <div class="card">
+    <div class="section-head">
+      <div>
+        <h2 id="productTitle">Products</h2>
+        <p>Edit product spelling, move products, or delete unwanted products.</p>
+      </div>
+
+      <div class="row-actions">
+        <a class="btn btn-light" href="/download-catalogue">
+          📄 Download Category &amp; Product List
+        </a>
+        <a class="btn btn-light" href="/download-excel">
+          📊 Download Excel
+        </a>
+        <button class="btn btn-primary" id="addProduct" type="button">
+          + Add Product
+        </button>
+      </div>
+    </div>
+
+    <input
+      id="productManageSearch"
+      placeholder="🔍 Search product..."
+      class="search-input"
+      type="search"
+    >
+
+    <button class="btn btn-light" id="checkDuplicates" type="button">
+      Check Duplicates
+    </button>
+
+    <div id="manageProducts" class="manage-products"></div>
+  </div>
+
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/products.js"></script>
+{% endblock %}

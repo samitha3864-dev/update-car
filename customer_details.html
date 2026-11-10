@@ -1,0 +1,37 @@
+{% extends 'base.html' %}{% block title %}Customer Details{% endblock %}{% block subtitle %}Search, filter, edit and manage saved customer entries{% endblock %}{% block content %}<section class="card customer-sales-graph-card"><div class="section-head"><div><h2>Customer Details – Monthly Daily Income Graph</h2>
+<p>Choose a month to view daily income, including dates with ₹0 sales.</p>
+<label>
+  Select graph month
+  <input id="graphMonthFilter" type="month">
+</label></div><div class="selected-day-box customer-graph-total"><div class="selected-day-title">Selected Date Total</div><div id="customerGraphAmount" class="selected-day-amount">₹0</div><div id="customerGraphDate" class="selected-day-date">All dates</div></div></div><div class="analytics-chart-container"><canvas id="customerDailyChart"></canvas></div></section><div class="card"><p class="priority-legend"><span></span> Yellow highlight = customer purchased Seat Cover or Sunfilm (same highlight in Excel).</p><div class="toolbar"><input id="customerSearch" placeholder="🔍 Search customer, mobile or vehicle..."><select id="monthFilter"><option value="">All months</option></select><label class="date-filter-label">Specific date <input id="dateFilter" type="date" aria-label="Show customers for selected date"></label><button
+  class="btn btn-light"
+  id="clearCustomerBtn"
+  type="button"
+  style="background:#fee2e2;color:#b91c1c"
+>
+  Clear Customer
+</button>
+<button class="btn btn-light" id="refreshBtn">↻ Refresh</button></div><div class="table-wrap"><table><thead><tr><th>#</th><th>Date</th><th>Customer</th><th>Mobile</th><th>Vehicle</th><th>Products</th><th>Amount</th><th>Action</th></tr></thead><tbody id="customerBody"></tbody></table></div></div><div class="modal" id="editModal" hidden><div class="modal-card"><div class="section-head"><h2>Edit Customer</h2><button class="icon-btn" id="closeEdit">×</button></div><div class="form-grid"><label>Date<input id="editDate"></label><label>Customer Name<input id="editName"></label><label>Mobile Number<input id="editMobile"></label><label>Vehicle Number<input id="editVehicle"></label><label>Total Amount<input id="editAmount" type="number"></label></div><div id="editProducts" class="selected-list"></div><div class="form-grid" style="margin-top:16px">
+  <label>
+    Product Category
+    <select id="editProductCategory">
+      <option value="">Select category</option>
+    </select>
+  </label>
+
+  <label>
+    Product
+    <select id="editProductName" disabled>
+      <option value="">Select product</option>
+    </select>
+  </label>
+
+  <label>
+    Quantity
+    <input id="editProductQuantity" type="number" min="1" value="1">
+  </label>
+</div>
+
+<button class="btn btn-light" id="addEditProductBtn" type="button">
+  + Add Product
+</button><button class="btn btn-success" id="updateBtn">Save Changes</button></div></div>{% endblock %}{% block scripts %}<script src="/static/customers.js"></script>{% endblock %}
